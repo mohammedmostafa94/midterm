@@ -1,0 +1,9 @@
+def transform_data(numbers):
+    squared_numbers = [num ** 2 for num in numbers]
+    sum_of_squares = sum(squared_numbers)
+    return squared_numbers, sum_of_squares
+if __name__ == "__main__":
+    integers = [1,2,3,4,5]
+    squared_list, total_sum = transform_data(integers)
+    print(f"Squared List: {squared_list}")
+    print(f"Sum of Squares: {total_sum}")
