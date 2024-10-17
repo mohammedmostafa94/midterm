@@ -1,0 +1,35 @@
+def read_grades(file_name):
+    grades = []
+    with open(file_name, 'r') as file:
+        for line in file:
+            name,grade = line.split()
+            grades.append((name, float(grade)))
+            
+        return grades
+
+def calculate_average(grades):
+    total = sum(grade for name,grade in grades)
+    average = total / len(grades) if grades else 0
+    return average
+
+def count_above_average(grades, average):
+    count = sum(1 for name,grade in grades if grade > average)
+    return count
+
+def write_results(file_name, average, count):
+    with open(file_name, 'w') as file:
+        file.write(f"Average Grade: {average:.2f}\n")
+        file.write(f"Students Above Average: {count}\n")
+
+def main():
+    grades_file = 'grades.txt'
+    results_file = 'results.txt'
+    
+    grades = read_grades(grades_file)
+    average = calculate_average(grades)
+    count = count_above_average(grades, average)
+    write_results(results_file, average, count)
+    
+
+if __name__ == "__main__":
+    main()
